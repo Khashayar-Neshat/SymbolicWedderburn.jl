@@ -262,7 +262,7 @@ function _symmetry_adapted_basis(
     for (χ, ds) in zip(irr, direct_summands)
         if issimple(ds) &&
            (d = size(ds, 1)) !=
-           (e = multiplicity(ds) * sum(multiplicities(χ) .> 0))
+           (e = multiplicity(ds) * Int(dot(χ,χ)))
             throw(
                 "The dimension of the projection doesn't match with simple summand multiplicity: $d ≠ $e",
             )
