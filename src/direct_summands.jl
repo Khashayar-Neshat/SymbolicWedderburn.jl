@@ -36,7 +36,7 @@ AP.degree(ds::DirectSummand) = AP.degree(character(ds))
 function projection_rank(ds::DirectSummand)
     return div(size(image_basis(ds), 1), multiplicity(ds))
 end
-issimple(ds::DirectSummand) = isone(projection_rank(ds))
+issimple(ds::DirectSummand) = isone(div(projection_rank(ds), Int(dot(character(ds), character(ds)))))
 
 function SparseArrays.droptol!(
     ds::DirectSummand{T,<:AbstractSparseArray},
